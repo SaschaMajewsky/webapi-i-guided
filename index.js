@@ -45,10 +45,27 @@ server.delete('/hubs/:id', (req, res) => {
       } else {
         res.status(404).json({ message: 'Hub not found.' });
       }
-      res.status(201).json(deletedHub);
     })
     .catch(error => {
-      res.status(400).json(error);
+      res.status(500).json(error);
+    });
+});
+
+// UPDATE IN CRUD
+server.put('/hubs/:id', (req, res) => {
+  const id = req.params.id;
+  const changes = req.body;
+
+  Hubs.update(id, changes)
+    .then(changedHub => {
+      if (changedHub) {
+        res.status(200).json(changedHub);
+      } else {
+        res.status(404).json({ message: 'Hub not found.' });
+      }
+    })
+    .catch(error => {
+      res.status(500).json(error);
     });
 });
 
