@@ -1,3 +1,5 @@
+Sascha Majewsky
+
 # Hubs Web API
 
 Guided project for **Web API I** module.
